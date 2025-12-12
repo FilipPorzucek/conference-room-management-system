@@ -1,0 +1,25 @@
+POST http://localhost:8081/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "marek@test.pl",
+  "password": "tajnehaslo123"
+}
+
+###2.
+POST http://localhost:8081/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "marek@test.pl",
+  "password": "tajnehaslo123"
+}
+
+### 3.
+POST http://localhost:8081/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "marek@test.pl",
+  "password": "zlehaslo"
+}
