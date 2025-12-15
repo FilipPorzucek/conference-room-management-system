@@ -23,3 +23,22 @@ Content-Type: application/json
   "email": "marek@test.pl",
   "password": "zlehaslo"
 }
+
+### 4. Próba wejścia bez tokena (Symulacja intruza)
+# Oczekujemy: 403 Forbidden
+GET http://localhost:8081/api/demo
+
+
+### 5. Logowanie (Pobranie biletu)
+# Oczekujemy: 200 OK i tokena w odpowiedzi
+POST http://localhost:8081/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "marek@test.pl",
+  "password": "tajnehaslo123"
+}
+
+### 6. Próba wejścia Z TOKENEM (Symulacja Angulara)
+GET http://localhost:8081/api/demo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJla0B0ZXN0LnBsIiwiaWF0IjoxNzY1ODE0NzAwLCJleHAiOjE3NjU5MDExMDB9.uP3FmvKy84Vxaw7Ows9ewuHkpsszfIInjii7YlKXxUI

@@ -1,0 +1,39 @@
+<div class="login-container">
+  <p-card header="Logowanie" [style]="{ width: '360px' }">
+    
+    <div class="field">
+      <label for="email">Email</label>
+      <input 
+        id="email" 
+        type="text" 
+        pInputText 
+        [(ngModel)]="email" 
+        class="w-full" 
+        placeholder="Podaj email" />
+    </div>
+
+    <div class="field" style="margin-top: 1rem;">
+      <label for="password">Hasło</label>
+      <input 
+        id="password" 
+        type="password" 
+        pInputText 
+        [(ngModel)]="password" 
+        class="w-full" 
+        placeholder="Podaj hasło" />
+    </div>
+
+    <div *ngIf="error" style="color: red; margin-top: 1rem;">
+      {{ error }}
+    </div>
+
+    <div style="margin-top: 1.5rem;">
+      <p-button 
+        label="Zaloguj się" 
+        (onClick)="onLogin()" 
+        styleClass="w-full">
+      </p-button>
+    </div>
+
+  </p-card>
+</div>
