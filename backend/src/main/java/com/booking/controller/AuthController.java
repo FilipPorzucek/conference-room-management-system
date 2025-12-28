@@ -29,7 +29,6 @@ public class AuthController {
         if(userRepository.findByEmail(registerRequest.getEmail())!=null){
             return ResponseEntity.badRequest().body("Email is already exists");
         }
-
         User user=new User();
         user.setEmail(registerRequest.getEmail());
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
@@ -39,7 +38,6 @@ public class AuthController {
         userRepository.save(user);
         return ResponseEntity.ok("User registered successfully");
     }
-
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginRequests loginRequests){
         User user=userRepository.findByEmail(loginRequests.getEmail());
@@ -47,12 +45,7 @@ public class AuthController {
         if (user==null || !passwordEncoder.matches(loginRequests.getPassword(),user.getPassword())){
             return ResponseEntity.status(401).body("Invalid email or password");
         }
-
         String token=jwtService.generateToken(user.getEmail());
-
         return ResponseEntity.ok(Map.of("token", token));
     }
-
-
-
 }
