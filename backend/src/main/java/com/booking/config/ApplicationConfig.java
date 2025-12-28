@@ -35,8 +35,7 @@ public class ApplicationConfig {
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService());
 
-        // 1. Tu był błąd: Musi być setUserDetailsService (bez słowa "Password" w środku)
-        // 2. Ustawiamy szyfrator
+
         authProvider.setPasswordEncoder(passwordEncoder());
 
         return authProvider;
